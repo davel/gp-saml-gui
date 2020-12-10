@@ -17,8 +17,6 @@ if gi is None:
     raise ImportError("Either gi (PyGObject) or pgi module is required.")
 
 import argparse
-import pprint
-import urllib
 import requests
 import xml.etree.ElementTree as ET
 import ssl
@@ -30,6 +28,7 @@ from shlex import quote
 from sys import stderr, platform
 from binascii import a2b_base64, b2a_base64
 from urllib.parse import urlparse, urlencode
+
 
 class SAMLLoginView:
     def __init__(self, uri, html=None, verbose=False, cookies=None, verify=True):
@@ -134,7 +133,8 @@ class SAMLLoginView:
             self.success = True
             Gtk.main_quit()
 
-def parse_args(args = None):
+
+def parse_args(args=None):
     pf2clientos = dict(linux='Linux', darwin='Mac', win32='Windows', cygwin='Windows')
     clientos2ocos = dict(Linux='linux-64', Mac='mac-intel', Windows='win')
     default_clientos = pf2clientos.get(platform, 'Windows')
